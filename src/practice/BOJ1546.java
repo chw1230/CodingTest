@@ -1,3 +1,5 @@
+package src.practice;
+
 import java.util.Scanner;
 
 public class BOJ1546 {

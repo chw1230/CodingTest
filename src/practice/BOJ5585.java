@@ -1,4 +1,4 @@
-package thisisCodingTest.Greedy;
+package src.practice;
 
 import java.util.Scanner;
 
