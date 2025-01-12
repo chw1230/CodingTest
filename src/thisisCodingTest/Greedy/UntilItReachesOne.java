@@ -1,4 +1,4 @@
-package src.thisisCodingTest.Greedy;
+package thisisCodingTest.Greedy;
 
 import java.util.Scanner;
 // 1이 될때 까지

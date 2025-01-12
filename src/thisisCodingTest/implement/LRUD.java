@@ -1,4 +1,4 @@
-package src.thisisCodingTest.implement;
+package thisisCodingTest.implement;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -8,7 +8,7 @@ public class LRUD {
         Scanner scanner = new Scanner(System.in);
         int N = scanner.nextInt();
         scanner.nextLine();
-        String[] move = scanner.nextLine().split(" "); // 공백으로 문자열을 잘라 move 문자열 만들기
+        String[] move = scanner.nextLine().split(" "); // 공백으로 문자열을 잘라 move 배열 만들기
         int x = 1, y = 1; // 기본 좌표 설정 / 배열 사용이 아니라 정수형 사용!
 
         int[] dy = {0, 0, -1, 1};

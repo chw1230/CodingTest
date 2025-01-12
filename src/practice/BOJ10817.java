@@ -1,7 +1,7 @@
-package src.practice;
+package practice;
 
-import java.util.Arrays;
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class BOJ10817 {
     public static void main(String[] args) {
