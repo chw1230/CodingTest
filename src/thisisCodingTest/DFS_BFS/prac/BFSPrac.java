@@ -1,37 +1,33 @@
-package thisisCodingTest.DFS_BFS;
+package thisisCodingTest.DFS_BFS.prac;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class BFS {
-
-    public static boolean[] visited = new boolean[9]; // 노드 방문 처리를 담을 배열 생성
+public class BFSPrac {
     public static ArrayList<ArrayList<Integer>> graph = new ArrayList<ArrayList<Integer>>();
+    public static boolean[] visitied = new boolean[9];
 
-    // BFS 함수 정의
-    public static void bfs(int start) {
-        Queue<Integer> q = new LinkedList<>();   // 여기서 LinkedList를 사용한 이유? ->
-        q.offer(start);  // 큐에 다가 시작 노드 넣기!
-        visited[start] = true; // 현재 노드를 방문 처리
+    public static void bfs(int x){
+        Queue<Integer> q = new LinkedList<>();
+        q.offer(x);
+        visitied[x] = true;
 
-        while(!q.isEmpty()) { // 큐가 빌 때까지 반복
-            int x = q.poll(); // 큐에서 하나의 원소를 뽑아 출력
-            System.out.print(x + " "); // 순서를 위해 출력
-
-            // 해당 원소와 연결된, 아직 방문하지 않은 원소들을 큐에 삽입
-            for(int i = 0; i < graph.get(x).size(); i++) { //  노드 x에 연결된 노드의 개수 만큼 반복
-                int y = graph.get(x).get(i); // y에 x노드와 연결된 노드의 '값'을 저장
-                if(!visited[y]) { // 노드 Y에 방문 한 적이 없는 경우
-                    q.offer(y);  //큐에 노드 추가
-                    visited[y] = true;  // 노드 방문 처리 진행
+        while (!q.isEmpty()) {
+            x = q.poll();
+            System.out.print(x+" ");
+            for (int i = 0; i < graph.get(x).size(); i++) {
+                int y = graph.get(x).get(i);
+                if (!visitied[y]) {
+                    q.offer(y);
+                    visitied[y] = true;
                 }
+
             }
         }
     }
 
     public static void main(String[] args) {
-        // 그래프 초기화
         for (int i = 0; i < 9; i++) {
             graph.add(new ArrayList<Integer>());
         }
