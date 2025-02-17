@@ -1,4 +1,4 @@
-package src.thisisCodingTest.Greedy;
+package thisisCodingTest.Greedy;
 
 import java.io.*;
 import java.util.Arrays;

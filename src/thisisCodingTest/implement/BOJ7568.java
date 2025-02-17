@@ -1,4 +1,4 @@
-package src.thisisCodingTest.implement;
+package thisisCodingTest.implement;
 
 import java.io.BufferedReader;
 import java.io.IOException;
