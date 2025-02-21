@@ -7,7 +7,7 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class BOJ28278 {
-
+    // stack 문제 풀기
     public static void main(String[] args) throws IOException {
         Deque<String> deque = new ArrayDeque<>();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
