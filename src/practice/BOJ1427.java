@@ -1,4 +1,4 @@
-package src.practice;
+package practice;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,4 +22,3 @@ public class BOJ1427 {
         }
     }
 }
-

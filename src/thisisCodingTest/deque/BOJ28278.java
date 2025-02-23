@@ -1,13 +1,15 @@
-package src.thisisCodingTest.deque;
+package thisisCodingTest.deque;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class BOJ28278 {
-    // stack 문제 풀기
+
     public static void main(String[] args) throws IOException {
         Deque<String> deque = new ArrayDeque<>();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
