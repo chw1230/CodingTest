@@ -24,12 +24,12 @@ public class BOJ1026 {
         for (int i = 0; i < B.length; i++) {
             B[i] = Integer.parseInt(st2.nextToken());
         }
-        Arrays.sort(A); // 오름 차순
-        Arrays.sort(B, Collections.reverseOrder()); // 내림 차순
+        Arrays.sort(A);
+        Arrays.sort(B, Collections.reverseOrder());
 
         int sum = 0;
         for (int i = 0; i < n; i++) {
-            sum += A[i] * B[i]; // 최소합 만들기
+            sum += A[i] * B[i];
         }
         System.out.println(sum);
     }
