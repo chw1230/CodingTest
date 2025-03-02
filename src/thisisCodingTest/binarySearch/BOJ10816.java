@@ -1,4 +1,4 @@
-package src.thisisCodingTest.binarySearch;
+package thisisCodingTest.binarySearch;
 
 import java.io.BufferedReader;
 import java.io.IOException;
