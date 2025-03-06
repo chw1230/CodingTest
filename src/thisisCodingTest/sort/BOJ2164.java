@@ -1,4 +1,4 @@
-package src.thisisCodingTest.sort;
+package thisisCodingTest.sort;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,6 +19,7 @@ public class BOJ2164 {
 
         while (deque.size() != 1) {
             deque.poll();
+            // 카드의 이동 구현 -> 맨위 빼서 밑장 넣기
             int move = deque.poll();
             deque.offer(move);
         }
