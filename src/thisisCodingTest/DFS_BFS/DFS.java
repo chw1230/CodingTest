@@ -6,6 +6,7 @@ public class DFS {
 
     public static boolean[] visited = new boolean[9]; // 노드 방문 처리를 담을 배열 생성
     public static ArrayList<ArrayList<Integer>> graph = new ArrayList<ArrayList<Integer>>();
+    // Integer 타입의 요소를 담을 수 있는 ArrayList를 요소로 가지는 또 다른 ArrayList를 의미
 
     // DFS 함수 정의
     public static void dfs(int x) {
@@ -16,6 +17,12 @@ public class DFS {
             int y = graph.get(x).get(i);  // y에 x노드와 연결된 노드의 '값'을 저장
             if (!visited[y]) dfs(y);  // 노드 Y에 방문 한 적없는 경우에만 노드 Y에서의 DFS 함수 실행하기 -> 재귀적!
         }
+        /*
+        graph.get(x)의 의미 x 번째 arrayList에 있는 arraylsit를 의미함!
+        for (Integer n : graph.get(x)) {
+            if(!visited[n]) dfs(n);
+        }
+         */
     }
 
 
@@ -60,6 +67,7 @@ public class DFS {
         graph.get(8).add(1);
         graph.get(8).add(7);
 
+        System.out.println(graph);
         System.out.print("노드의 탐색 순서: ");
         dfs(1); // 1을 시작 노드로 설정
     }

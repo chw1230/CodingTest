@@ -11,7 +11,7 @@ public class BFS {
 
     // BFS 함수 정의
     public static void bfs(int start) {
-        Queue<Integer> q = new LinkedList<>();   // 여기서 LinkedList를 사용한 이유? ->
+        Queue<Integer> q = new LinkedList<>();
         q.offer(start);  // 큐에 다가 시작 노드 넣기!
         visited[start] = true; // 현재 노드를 방문 처리
 
