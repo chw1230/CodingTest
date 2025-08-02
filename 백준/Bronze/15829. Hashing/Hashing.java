@@ -10,18 +10,12 @@ public class Main {
         int L = Integer.parseInt(br.readLine());
         String s = br.readLine();
         long sum = 0;
+        long pow = 1;
 
-        char c[] = new char[L];
-        Map<Character, Integer> map = new HashMap<Character, Integer>();
-        for (int i = 0; i < L; i++) {
-            c[i] = s.charAt(i);
-            map.put(c[i], c[i] - 'a' + 1);
+        for ( int i  = 0; i < L ; i++ ) {
+            sum = ( sum + (s.charAt(i) - 'a' + 1) * pow) % 1234567891;
+            pow = (pow * 31) % 1234567891; // pow에 계속 31을 곱해주기 -> 즉시 나눠서 오류 없애기
         }
-
-        for (int i = 0; i < L; i++) {
-            sum += map.get(c[i])*Math.pow(31, i);
-        }
-        System.out.println(sum % 1234567891);
-
+        System.out.println(sum);
     }
 }
