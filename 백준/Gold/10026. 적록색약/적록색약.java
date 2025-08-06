@@ -23,7 +23,6 @@ public class Main {
                 }
             }
         }
-        return;
     }
 
     public static void main(String[] args) throws IOException {
@@ -45,7 +44,7 @@ public class Main {
             }
         }
 
-        int result[] = new int[2]; // 비적녹생액, 적녹색약
+        int result[] = new int[2]; // 비적녹 생약, 적녹 색약
         for (int k = 0; k < 2; k++) {
             if (k == 1) {
                 color = newArr;
