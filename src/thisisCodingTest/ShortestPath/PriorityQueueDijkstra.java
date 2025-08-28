@@ -61,7 +61,7 @@ public class PriorityQueueDijkstra {
                 int cur = node.getIdx(); // 현재 노드
 
                 if (d[cur] < dist) {
-                    // 현재 우선순위 큐에서 꺼낸 노드까지의 거리(dist)가, 이전에 이미 발견된 더 짧은 최단 경로(d[cur])보다 길다면, 무시하기
+                    // 현재 우선순위 큐에서 꺼낸 노드까지의 거리(dist)가 이전에 이미 발견된 더 짧은 최단 경로(d[cur])보다 길다면 현재 노드와 연결된 노드를 볼 필요가 없으니까 무시하기
                     continue;
                 }
 
