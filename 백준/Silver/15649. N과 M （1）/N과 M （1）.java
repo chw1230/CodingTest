@@ -12,9 +12,9 @@ public class Main {
     static int check[]; // 뽑은 수를 넣을 배열
 
 
-    static void DFS(int a) {
-        if (a == M) { // 개수가 3개가 쌓였다 => 출력
-            for (int b : check) {
+    static void DFS(int a) { // 지금까지 뽑은 개수를 의미하는 a !
+        if (a == M) { // 개수가 M개가 쌓였다 => 뽑아 놓은 수들 M개를 출력
+            for (int b : check) { 
                 System.out.print(b+" ");
             }
             System.out.println();
@@ -42,6 +42,7 @@ public class Main {
         visited = new boolean[N+1];
         check = new int[M];
 
-        DFS(0);
+        DFS(0); // 아직 아무것도 안 뽑았으니 0을 부여하며 시작하자!
     }
+
 }
