@@ -13,6 +13,7 @@ public class Main {
     private static int[] checked;
     private static int[] arr;
     private static Map<String,Integer> map;
+    /* 아니 map 안 쓰고도 풀 수 있을 것 같은데 ㅠㅜ! 생각이 안나요.. */
 
     private static void DFS(int cnt) {
         if (cnt == M) {
