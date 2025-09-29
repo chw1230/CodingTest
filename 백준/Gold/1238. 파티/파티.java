@@ -10,6 +10,7 @@ public class Main {
     // 생각 정리 : 모든 집에서 2로 가야해, 그리고 2에서 집으로 다시 가야해! -> 그러면 2에서 오는 것은 문제가 없네? => 2를 출발호 해서 다익스트라하면 되니까!!
     // 모든 집에서 2로 가는 거는 어떻게 하지? -> 문제에서 '모든 학생들은 집에서 X에 갈수 있고, X에서 집으로 돌아올 수 있는 데이터만 입력으로 주어진다.'라고 하였기 때문에
     // 그래프의 방향을 반대로 해서 저장하는 그래프를 통해서 2부터 출발하면 모든 루프를 돌지 않고 2번으로 오늘 시간을 구할 수 있음!
+    // 리펙토링 -> 메서드의 매개변수에 배열이랑 그래프 넘겨서 처리하기 => 공통 부분 처리하기
     private static int N, X, M;
     private static int arr[];
     private static int arrREVERSE[];
@@ -45,44 +46,25 @@ public class Main {
         }
     }
 
-    private static void dijkstra(int start, int n) {
+    private static void dijkstra(int start, int a[] , ArrayList<ArrayList<Node>> g) {
         pq.add(new Node(start, 0));
-        if (n == 1) {
-            arr[start] = 0;
-        } else {
-            arrREVERSE[start] = 0;
-        }
+        a[start] = 0;
 
         while (!pq.isEmpty()) {
             Node cur = pq.poll();
             int curIdx = cur.getIdx();
             int curTime = cur.getTime();
 
-            if (n == 1) {
-                if (arr[curIdx] < curTime) {
-                    continue;
-                }
+            if (a[curIdx] < curTime) {
+                continue;
+            }
 
-                for (int i = 0; i < graph.get(curIdx).size(); i++) {
-                    int time = arr[curIdx] + graph.get(curIdx).get(i).getTime();
+            for (int i = 0; i < g.get(curIdx).size(); i++) {
+                int time = a[curIdx] + g.get(curIdx).get(i).getTime();
 
-                    if (time < arr[graph.get(curIdx).get(i).getIdx()]) {
-                        arr[graph.get(curIdx).get(i).getIdx()] = time;
-                        pq.add(new Node(graph.get(curIdx).get(i).getIdx(), time));
-                    }
-                }
-            } else {
-                if (arrREVERSE[curIdx] < curTime) {
-                    continue;
-                }
-
-                for (int i = 0; i < graphREVERSE.get(curIdx).size(); i++) {
-                    int time = arrREVERSE[curIdx] + graphREVERSE.get(curIdx).get(i).getTime();
-
-                    if (time < arrREVERSE[graphREVERSE.get(curIdx).get(i).getIdx()]) {
-                        arrREVERSE[graphREVERSE.get(curIdx).get(i).getIdx()] = time;
-                        pq.add(new Node(graphREVERSE.get(curIdx).get(i).getIdx(), time));
-                    }
+                if (time < a[g.get(curIdx).get(i).getIdx()]) {
+                    a[g.get(curIdx).get(i).getIdx()] = time;
+                    pq.add(new Node(g.get(curIdx).get(i).getIdx(), time));
                 }
             }
         }
@@ -117,10 +99,10 @@ public class Main {
         }
 
         pq = new PriorityQueue<>();
-        dijkstra(X,1 ); // X 마을에서 집에오는 거를 구하자 -> graph 이용
+        dijkstra(X,arr, graph ); // X 마을에서 집에오는 거를 구하자 -> graph 이용
 
         pq = new PriorityQueue<>();
-        dijkstra(X,0 ); // 반대
+        dijkstra(X,arrREVERSE,graphREVERSE ); // 반대
 
         int max = 0;
         for (int i = 1; i <= N; i++) {
