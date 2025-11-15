@@ -12,11 +12,11 @@ public class Main {
         int T = Integer.parseInt(st.nextToken());
 
         Deque<Integer> dq = new ArrayDeque<>();
-        for (int i = 0; i < 3*N; i++) {
-            if (i % 3 == 0) {
-                st = new StringTokenizer(br.readLine());
+        for (int l = 0; l < 3; l++) {
+            st = new StringTokenizer(br.readLine());
+            for (int i = 0; i < N; i++) {
+                dq.addLast(Integer.parseInt(st.nextToken()));
             }
-            dq.addLast(Integer.parseInt(st.nextToken()));
         }
 
         for (int i = 0; i < T; i++) {
