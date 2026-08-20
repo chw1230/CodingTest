@@ -1,39 +1,27 @@
-import java.util.HashSet;
-import java.util.Set;
-
 class Solution {
-    private static int[] visited;
-    private static int[][] computer;
-
     public static int solution(int n, int[][] computers) {
-        visited = new int[n];
-        computer = computers;
+        int answer = 0;
 
-        for (int i = 0; i < computers.length; i++) {
-            if (visited[i] == 0) {
-                dfs(i,i+1);
+        // 방문 처리 배열
+        boolean[] visited = new boolean[n];
+
+        for (int i = 0; i < n; i++) {
+            if (!visited[i]) { // 방문하지 않았다면
+                answer++; // 네트워크의 수를 하나 증가
+                dfs(i, computers, visited);
             }
         }
-
-        Set<Integer> set = new HashSet<>();
-        for (int i : visited) {
-            set.add(i);
-        }
-        return set.size();
+        return answer;
     }
 
-    private static void dfs(int n, int k) {
-        if ( visited[n] != 0 ) {
-            return;
-        }
-        visited[n] = k;
+    private static void dfs(int start, int[][] computers, boolean[] visited) {
+        visited[start] = true;
 
-        for (int i = 0; i < computer[n].length; i++) {
-            if (n == i) {
-                continue;
-            }
-            if (computer[n][i] == 1 && visited[i] == 0) {
-                dfs(i,k);
+        for (int i = 0; i < computers[start].length; i++) {
+            if (!visited[i]) {
+                if (computers[start][i] == 1) {
+                    dfs(i, computers, visited);
+                }
             }
         }
     }
