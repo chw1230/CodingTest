@@ -2,22 +2,21 @@ import java.util.Arrays;
 
 class Solution {
     public int solution(int[][] targets) {
-        int answer = 0;
+        int cnt = 0;
 
-        Arrays.sort(targets, (o1, o2) -> o1[1] - o2[1]);
+        // end 오름차순
+        Arrays.sort(targets, (a, b) -> a[1] - b[1]);
 
-        int a = -1; // 요격위치
-
+        int pos = Integer.MIN_VALUE;
         for (int i = 0; i < targets.length; i++) {
-            int s =  targets[i][0];
-            int e = targets[i][1];
+            int start = targets[i][0];
+            int end = targets[i][1];
 
-            if (s >= a) {
-                answer++;
-                a = e;
+            if (pos <= start) {
+                cnt++;
+                pos = end;
             }
         }
-
-        return answer;
+        return cnt;
     }
 }
