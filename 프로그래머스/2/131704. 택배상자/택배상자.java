@@ -3,34 +3,30 @@ import java.util.List;
 import java.util.Stack;
 
 class Solution {
-    public int solution(int[] order) {
-        int answer = 0;
+    public static int solution(int[] order) {
+        int cnt = 0;
 
-        Stack<Integer> stack = new Stack<>();
+        Stack<Integer> stack = new Stack<>(); // 저장소 컨테이너 벨트
 
-        int n = order.length;
-
-        List<Integer> list = new ArrayList<>();
-
-        for (int i = 1; i <= n; i++) {
-            if (order[answer] == i) {
-                answer++;
-                if ( i == n) {
+        for (int i = 1; i <= order.length; i++) {
+            if (order[cnt] == i) {
+                cnt++;
+                if (i == order.length) {
                     i--;
                 }
-            } else if (!stack.isEmpty() && stack.peek() == order[answer]) {
-                stack.pop();
-                answer++;
-                i--;
-                if ( answer == n) {
-                    return answer;
-                }
             } else {
-                // 다르면
-                stack.push(i);
+                if (!stack.isEmpty() && (stack.peek() == order[cnt])) {
+                    stack.pop();
+                    cnt++;
+                    i--;
+                    if ( cnt ==  order.length) {
+                        return cnt;
+                    }
+                } else {
+                    stack.push(i);
+                }
             }
-
         }
-        return answer;
+        return cnt;
     }
 }
