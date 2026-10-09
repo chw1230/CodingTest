@@ -1,24 +1,31 @@
 import java.util.HashMap;
 
 class Solution {
-   public int solution(String[] want, int[] number, String[] discount) {
+  public static int solution(String[] want, int[] number, String[] discount) {
         int answer = 0;
 
-        for (int i = 0; i < discount.length - 9; i++) {
-            HashMap<String,Integer> map = new HashMap<>();
-            for (int k = 0; k < want.length; k++) {
-                map.put(want[k], number[k]);
-            }
-            for (int j = i; j < 10+i; j++) {
-                if (map.containsKey(discount[j])) {
-                    map.put(discount[j], map.get(discount[j]) - 1);
-                    if (map.get(discount[j]) == 0) {
-                        map.remove(discount[j]);
-                    }
-                }
+        HashMap<String, Integer> userMap = new HashMap<>();
+        int sum = 0;
+        for (int i = 0; i < want.length; i++) {
+            userMap.put(want[i], number[i]);
+            sum += number[i];
+        }
 
+        for (int i = 0; i <= discount.length - sum; i++) {
+            HashMap<String, Integer> tempMap = new HashMap<>(userMap);
+            boolean m = true;
+
+            for (int j = 0; j < sum; j++) {
+                String key = discount[i + j];
+                if (tempMap.containsKey(key) && tempMap.get(key) > 0) {
+                    tempMap.put(key, tempMap.get(key) - 1);
+                } else {
+                    m = false;
+                    break; // 조건 안 맞으면 안쪽 반복문 탈출
+                }
             }
-            if (map.isEmpty()){
+
+            if (m) {
                 answer++;
             }
         }
